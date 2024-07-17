@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Barcodes</title>
+</head>
+<body>
+    <h2>Generate Barcodes</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="excel_file" accept=".xlsx"><br>
+        <input type="text" name="folder_name" placeholder="Enter Folder Name"><br>
+        <button type="submit">Generate Barcodes</button>
+    </form>
+
+    {% if barcode_images %}
+    <h3>Generated Barcodes:</h3>
+    {% for image in barcode_images %}
+    <img src="{{ MEDIA_URL }}barcodes/{{ image }}" alt="Barcode Image"><br>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Success!</h2>
+    <p>Barcodes have been successfully generated.</p>
+    <a href="{% url 'generate_barcode' %}">Generate More Barcodes</a>
+    <br><br>
+    <a href="{% url 'barcode_list' %}">View Generated Barcodes</a>
+    <br><br>
+    <a href="{% url 'home' %}">Home</a>
+{% endblock %}

@@ -18,6 +18,8 @@ AbstractUser._meta.get_field('user_permissions').remote_field.related_name = 'au
 class Barcode(models.Model):
     barcode_number = models.CharField(max_length=13)
     image = models.ImageField(upload_to='barcodes/', blank=True, null=True)
+    folder_name = models.CharField(max_length=100, default='default_folder_name')
 
     def __str__(self):
         return self.barcode_number
+    

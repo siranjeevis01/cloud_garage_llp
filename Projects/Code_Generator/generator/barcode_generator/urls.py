@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterView, LoginView, LogoutView, BarcodeGeneratorView, HomeView, BarcodeListView, SuccessView
+from .views import RegisterView, LoginView, LogoutView, BarcodeGeneratorView, HomeView, BarcodeListView, SuccessView, LastBarcodeGeneratedListView
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('barcodes/', BarcodeListView.as_view(), name='barcode_list'),
     path('', HomeView.as_view(), name='home'),  
     path('success/', SuccessView.as_view(), name='success'),
+    path('last_barcode_generated_list/', LastBarcodeGeneratedListView.as_view(), name='last_barcode_generated_list'),
 
 ]

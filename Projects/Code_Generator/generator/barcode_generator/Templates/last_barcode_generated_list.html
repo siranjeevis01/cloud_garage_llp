@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Last Barcode Generated List for Folder: {{ folder_name }}</h2>
+  {% if images %}
+    <ul>
+      {% for image in images %}
+        <li>
+          <img src="{{ image }}" alt="Barcode Image" style="max-width: 200px; max-height: 200px;">
+          <br>
+        </li>
+        <span>Barcode Image: {{ image }}</span>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No barcodes generated yet for folder: {{ folder_name }}</p>
+  {% endif %}
+{% endblock %}

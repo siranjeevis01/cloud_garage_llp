@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Generated Barcodes</title>
+    <title>Generated Barcodes List</title>
 </head>
 <body>
-    <h2>Generated Barcodes</h2>
+    <h2>Generated Barcodes List</h2>
+    <h3>Distinct Folders:</h3>
     <ul>
-        {% for barcode in barcodes %}
-        <p>Barcode Number: {{ barcode.barcode_number }}</p>
-        <img src="{{ barcode.image.url }}" alt="Barcode Image">
+        {% for folder in folders %}
+            <li>{{ folder }}</li>
         {% endfor %}
     </ul>
     <br>

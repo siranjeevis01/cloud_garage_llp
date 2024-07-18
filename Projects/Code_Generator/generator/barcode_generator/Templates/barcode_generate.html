@@ -10,5 +10,7 @@
         {{ form.as_p }}
         <button type="submit">Generate</button>
     </form>
+    <br>
+    <a href="{% url 'last_barcode_generated_list' %}">View Last Generated Folder</a>
 </body>
 </html>

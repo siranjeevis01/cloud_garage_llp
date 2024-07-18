@@ -5,7 +5,9 @@
     <p>Barcodes have been successfully generated.</p>
     <a href="{% url 'generate_barcode' %}">Generate More Barcodes</a>
     <br><br>
-    <a href="{% url 'barcode_list' %}">View Generated Barcodes</a>
+    <a href="{% url 'barcode_list' %}">View Generated Barcodes Folders</a>
+    <br><br>
+    <a href="{% url 'last_barcode_generated_list' %}">View Last Generated Folder</a>
     <br><br>
     <a href="{% url 'home' %}">Home</a>
 {% endblock %}

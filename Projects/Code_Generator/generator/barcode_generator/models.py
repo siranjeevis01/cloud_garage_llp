@@ -23,3 +23,9 @@ class Barcode(models.Model):
     def __str__(self):
         return self.barcode_number
     
+class QRCode(models.Model):
+    code = models.CharField(max_length=100, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.code

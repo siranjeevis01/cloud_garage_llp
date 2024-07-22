@@ -85,24 +85,20 @@ class BarcodeGeneratorView(View):
         form = BarcodeForm(request.POST, request.FILES)
         if form.is_valid():
             excel_files = request.FILES.getlist('excel_file')
-            folder_name = form.cleaned_data['folder_name']
-            
+            folder_name = form.cleaned_data['folder_name']            
             media_dir = os.path.join(settings.MEDIA_ROOT, 'barcodes')
-            os.makedirs(media_dir, exist_ok=True)
-            
+            os.makedirs(media_dir, exist_ok=True)          
             try:
                 for excel_file in excel_files:
-                    excel_path = os.path.join(media_dir, excel_file.name)
-                    
+                    excel_path = os.path.join(media_dir, excel_file.name)  
                     with open(excel_path, 'wb+') as destination:
                         for chunk in excel_file.chunks():
                             destination.write(chunk)
-                    
-                    print(f"Excel file saved at: {excel_path}")
+                    # print(f"Excel file saved at: {excel_path}")
                     
                     barcode_generator = BarcodeGenerator(excel_path, settings.MEDIA_ROOT, folder_name)
                     barcode_generator.run()
-                    print(f"Barcodes generated for {excel_file.name}")
+                    # print(f"Barcodes generated for {excel_file.name}")
                 
                 messages.success(request, 'Barcodes generated successfully.')
                 return redirect('success')
@@ -123,11 +119,10 @@ class BarcodeGenerator:
 
     def read_excel(self):
         self.df = pd.read_excel(self.excel_path)
-        print("DataFrame columns:", self.df.columns)  
-        print("DataFrame head:", self.df.head())  
+        # print("DataFrame columns:", self.df.columns)  
+        # print("DataFrame head:", self.df.head())  
         
-        expected_columns = ['Barcode']
-        actual_columns = list(self.df.columns) 
+        actual_columns = list(self.df.columns)
         if actual_columns and isinstance(actual_columns[0], int):
             actual_columns = ['Barcode' if i == 0 else str(i) for i in range(len(actual_columns))]
             self.df.columns = actual_columns
@@ -143,14 +138,13 @@ class BarcodeGenerator:
         try:
             for index, row in self.df.iterrows():
                 barcode_number = str(row['Barcode'])
-                print(f"Generating barcode for: {barcode_number}") 
+                # print(f"Generating barcode for: {barcode_number}") 
                 filename = os.path.join(self.new_output_dir, f'barcode_image_{index + 1}.png')
                 
                 PRODUCT = barcode.get_barcode_class('ean13')
                 product = PRODUCT(barcode_number, writer=ImageWriter())
                 barcode_image_path = product.save(filename)
-                print(f"Barcode image saved at: {barcode_image_path}")
-                
+                # print(f"Barcode image saved at: {barcode_image_path}")         
                 
         except KeyError as e:
             print(f"KeyError: {e}")

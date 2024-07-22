@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>You are logged in.</p><br>
+    <h1>Welcome to QR and Barcode Generator</h1><br>
+    <a href="{% url 'generate' %}">Generate Barcode</a><br>
+    <br><br>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

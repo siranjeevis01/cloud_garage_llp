@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last QR Codes Generated</title>
+</head>
+<body>
+    <header>
+        <h1>Last QR Codes Generated</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'generate_barcode' %}">Generate Barcodes</a></li>
+                <li><a href="{% url 'qr_code_generate' %}">Generate QR Codes</a></li>
+                <li><a href="{% url 'barcode_list' %}">Barcode List</a></li>
+                <li><a href="{% url 'last_barcode_generated_list' %}">Last Barcode Generated</a></li>
+                <li><a href="{% url 'success' %}">Success</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>QR Codes from Folder: {{ folder_name }}</h2>
+
+        {% if images %}
+            <div class="gallery">
+                {% for image in images %}
+                    <div class="image">
+                        <img src="{{ image }}" alt="QR Code Image">
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No QR codes found in the last generated folder.</p>
+        {% endif %}
+    </main>
+
+    {% comment %} <footer>
+        <p>&copy; {{ current_year }} Your Company Name. All rights reserved.</p>
+    </footer> {% endcomment %}
+</body>
+</html>

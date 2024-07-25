@@ -1,1 +1,1 @@
-sfafas
+SECRET_KEY = 'django-insecure-qx90vgg8ozh2rc$!p+z9$z2%7bw3t-1d6m&=v2lm3hxxe==nz2'
